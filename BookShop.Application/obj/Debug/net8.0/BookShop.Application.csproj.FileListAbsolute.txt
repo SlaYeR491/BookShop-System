@@ -1,0 +1,15 @@
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\BookShop.Application.deps.json
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\BookShop.Application.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\BookShop.Application.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.AssemblyInfoInputs.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.AssemblyInfo.cs
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.csproj.CoreCompileInputs.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\refint\BookShop.Application.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\ref\BookShop.Application.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\BookShop.Domain.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\BookShop.Domain.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.csproj.AssemblyReference.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.csproj.CopyComplete

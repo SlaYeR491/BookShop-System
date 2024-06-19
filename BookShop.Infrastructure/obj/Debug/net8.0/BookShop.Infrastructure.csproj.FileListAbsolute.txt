@@ -1,0 +1,17 @@
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\bin\Debug\net8.0\BookShop.Infrastructure.deps.json
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\bin\Debug\net8.0\BookShop.Infrastructure.runtimeconfig.json
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\bin\Debug\net8.0\BookShop.Infrastructure.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\bin\Debug\net8.0\BookShop.Infrastructure.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\bin\Debug\net8.0\BookShop.Domain.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\bin\Debug\net8.0\BookShop.Domain.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.AssemblyInfo.cs
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.csproj.CopyComplete
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\refint\BookShop.Infrastructure.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.genruntimeconfig.cache
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\ref\BookShop.Infrastructure.dll
