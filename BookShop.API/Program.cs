@@ -1,11 +1,8 @@
-using BookShop.API.Aggregates;
+using BookShop.API.Configurations;
 using BookShop.API.Extensions;
-using BookShop.API.Mapping;
 using BookShop.API.Options;
 using BookShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
@@ -15,30 +12,13 @@ builder.Services.AddDbContext<AppDbContext>(op =>
 {
     op.UseSqlServer(builder.Configuration.GetConnectionString("sql"));
 });
-builder.Services.Register();
 
 var jwt = builder.Configuration.GetSection("Jwt").Get<JwtOptions>();
-builder.Services.AddAuthentication()
-    .AddJwtBearer("Bearer", op =>
-    {
-        op.SaveToken = true;
-        op.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SigningKey)),
-            ValidIssuer = jwt.Issuer,
-            ValidAudience = jwt.Audience
+new JwtConfigure(builder.Services, jwt).AddJwtToken();
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 
-        };
-    });
+builder.Services.Register();
 
-builder.Services.AddSingleton<JwtServices>()
-                .AddScoped(typeof(Mapper<,>))
-                .AddScoped<Hashing>()
-                .AddSingleton(jwt);
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

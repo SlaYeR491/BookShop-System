@@ -23,7 +23,7 @@ namespace BookShop.API.Controllers
         public async Task<ActionResult> Login(AuthenticationRequest request)
         {
             request.Password = hashing.Hash(Encoding.UTF8.GetBytes(request.Password));
-            var acc = await adminServices.Login(mapper.Map(request));
+            var acc = await adminServices.LoginAsync(mapper.Map(request));
             if (acc != null)
             {
                 var claims = new ClaimsIdentity(new Claim[]
@@ -32,7 +32,7 @@ namespace BookShop.API.Controllers
                 new Claim(ClaimTypes.Role,"Admin"),
                 new Claim(ClaimTypes.Name,acc.UserName)
                 });
-                return Ok(tokenServices.Create(claims));
+                return Ok(tokenServices.CreateToken(claims));
             }
             return Unauthorized();
         }

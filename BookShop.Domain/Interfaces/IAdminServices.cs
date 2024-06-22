@@ -4,6 +4,7 @@ namespace BookShop.Domain.Interfaces
 {
     public interface IAdminServices
     {
-        public ValueTask<AdminAccount?> Login(AdminAccount account);
+        public ValueTask<AdminAccount?> LoginAsync(AdminAccount account);
+        public ValueTask<bool> IsActiveAsync(object accountId);
     }
 }

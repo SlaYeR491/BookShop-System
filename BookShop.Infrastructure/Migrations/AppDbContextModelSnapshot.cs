@@ -30,6 +30,9 @@ namespace BookShop.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -46,12 +49,14 @@ namespace BookShop.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            IsActive = false,
                             Password = "�\r�Ⱥ�������-���n�	��t&N",
                             UserName = "Ahmed"
                         },
                         new
                         {
                             Id = 2,
+                            IsActive = false,
                             Password = "���9�\"C	�N�}�pT����گ ���3-�",
                             UserName = "Mohamed"
                         });
@@ -134,6 +139,9 @@ namespace BookShop.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Password")
                         .IsRequired()

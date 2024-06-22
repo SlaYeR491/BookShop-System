@@ -7,14 +7,14 @@ namespace BookShop.Application.Services
     {
         public async ValueTask<CustomerAccount?> AddAsync(CustomerAccount account)
         {
-            var Exist = await CheckValidEmail(account.UserName);
+            var Exist = await CheckValidEmailAsync(account.UserName);
             if (Exist != null) return null;
             await _repo.CreateAsync(account);
             await _repo.SaveChangesAsync();
             return account;
         }
 
-        public async ValueTask<CustomerAccount?> CheckValidEmail(string Email)
+        public async ValueTask<CustomerAccount?> CheckValidEmailAsync(string Email)
         {
             return await _repo.ReadAsync(a => a.UserName == Email);
         }
@@ -36,6 +36,25 @@ namespace BookShop.Application.Services
              a.Password == account.Password);
         }
 
+        public async ValueTask<bool> IsActiveAsync(object accountId)
+        {
+            var acc = await _repo.ReadAsync(accountId);
+            if (acc != null)
+                return acc.IsActive;
+            return false;
+        }
+
+        public async ValueTask<CustomerAccount?> LoginAsync(CustomerAccount account)
+        {
+            var Exist = await ExistenceAsync(account);
+            if (Exist == null)
+                return null;
+            Exist.IsActive = true;
+            _repo.Update(Exist);
+            _repo.SaveChanges();
+            return Exist;
+        }
+
         public async ValueTask<IEnumerable<CustomerAccount>?> ReadAllAsync()
         {
             return await _repo.ReadAllAsync();
@@ -44,6 +63,17 @@ namespace BookShop.Application.Services
         public async ValueTask<CustomerAccount?> ReadAsync(object accountId)
         {
             return await _repo.ReadAsync(accountId);
+        }
+
+        public async ValueTask UnSetActive(object accountId)
+        {
+            var Exist = await ReadAsync(accountId);
+            if(Exist != null)
+            {
+                Exist.IsActive = false;
+                _repo.Update(Exist);
+                _repo.SaveChanges();
+            }
         }
 
         public async ValueTask<CustomerAccount?> UpdateAsync(CustomerAccount account)

@@ -26,7 +26,7 @@ namespace BookShop.API.Controllers
         public async ValueTask<ActionResult<string>> Login(AuthenticationRequest request)
         {
             request.Password = hashing.Hash(Encoding.UTF8.GetBytes(request.Password));
-            var acc = await customerService.ExistenceAsync(requestmapper.Map(request));
+            var acc = await customerService.LoginAsync(requestmapper.Map(request));
             if (acc == null)
                 return Unauthorized();
             var claims = new ClaimsIdentity(new Claim[]
@@ -34,7 +34,7 @@ namespace BookShop.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, acc.Id.ToString()),
                 new Claim(ClaimTypes.Name, acc.UserName)
             });
-            return Ok(tokenServices.Create(claims));
+            return Ok(tokenServices.CreateToken(claims));
         }
         [HttpPost]
         [AllowAnonymous]
@@ -49,7 +49,7 @@ namespace BookShop.API.Controllers
                 new Claim(ClaimTypes.NameIdentifier, acc.Id.ToString()),
                 new Claim(ClaimTypes.Name, acc.UserName)
             });
-            return Ok(tokenServices.Create(claims));
+            return Ok(tokenServices.CreateToken(claims));
         }
         [HttpPut]
         public async ValueTask<ActionResult<CustomerBookDto>> UpdateAccount(CustomerAccountDto Acc)
@@ -86,6 +86,11 @@ namespace BookShop.API.Controllers
             var book = await customerbooksServices.UpdateAsync(customerbookmapper.Map(bookDto));
             return Ok((customerbookmapper.Map(book)));
         }
-
+        [HttpPost]
+        [AllowAnonymous]
+        public async ValueTask<ActionResult> GetRefreshToken([FromBody] string oldtoken, int accId)
+        {
+            return Ok(await tokenServices.CreateRefreshTokenAsync(oldtoken, accId));
+        }
     }
 }

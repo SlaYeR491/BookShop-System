@@ -142,3 +142,4 @@ C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.API\bin\Debug\net8.0\AutoMapp
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.API\bin\Debug\net8.0\BookShop.Application.dll
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.API\bin\Debug\net8.0\BookShop.Application.pdb
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.API\obj\Debug\net8.0\BookShop.API.sourcelink.json

@@ -15,3 +15,4 @@ C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.pdb
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.genruntimeconfig.cache
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\ref\BookShop.Infrastructure.dll
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Infrastructure\obj\Debug\net8.0\BookShop.Infrastructure.sourcelink.json

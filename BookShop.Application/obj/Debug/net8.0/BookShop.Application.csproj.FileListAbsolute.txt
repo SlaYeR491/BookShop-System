@@ -13,3 +13,4 @@ C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\bin\Debug\net8.0\BookShop.Domain.pdb
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.csproj.AssemblyReference.cache
 C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.csproj.CopyComplete
+C:\Users\SlaYeR\Documents\GitHub\BookShop\BookShop.Application\obj\Debug\net8.0\BookShop.Application.sourcelink.json

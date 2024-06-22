@@ -1,4 +1,7 @@
-﻿using BookShop.Application.Services;
+﻿using BookShop.API.Aggregates;
+using BookShop.API.Configurations;
+using BookShop.API.Mapping;
+using BookShop.Application.Services;
 using BookShop.Domain.Interfaces;
 using BookShop.Infrastructure.Data;
 
@@ -17,7 +20,11 @@ namespace BookShop.API.Extensions
                 .AddScoped<IPaymentServices, PaymentServices>()
                 .AddScoped<IRoomServices, RoomServices>()
                 .AddScoped<IRoomDetailServices, RoomDetailServices>()
-                .AddScoped<ICustomerRoomServices, CustomerRoomServices>();
+                .AddScoped<ICustomerRoomServices, CustomerRoomServices>()
+                .AddScoped<JwtServices>()
+                .AddScoped(typeof(Mapper<,>))
+                .AddScoped<Hashing>()
+                ;
         }
     }
 }
