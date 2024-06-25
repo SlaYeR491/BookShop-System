@@ -1,9 +1,11 @@
 ﻿using BookShop.Data;
 using BookShop.Domain.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace BookShop.Application.Services
 {
-    public class BookServices(IRepository<Book> _repo) : IBookServices
+    public class BookServices(IRepository<Book> _repo,
+        IMemoryCache memoryCache) : IBookServices
     {
         public async ValueTask<Book?> AddAsync(Book book)
         {
@@ -34,7 +36,16 @@ namespace BookShop.Application.Services
 
         public async ValueTask<IEnumerable<Book>?> ReadAllAsync()
         {
-            return await _repo.ReadAllAsync();
+            if (!memoryCache.TryGetValue<IEnumerable<Book>?>("BooksList", out var bookslist))
+            {
+                bookslist = await _repo.ReadAllAsync();
+                memoryCache.Set("BooksList", bookslist, new MemoryCacheEntryOptions
+                {
+                    Size = 10,
+                    Priority=CacheItemPriority.High
+                });
+            }
+            return bookslist;
         }
 
         public async ValueTask<Book?> ReadAsync(object bookId)
@@ -55,7 +66,7 @@ namespace BookShop.Application.Services
 
         public async ValueTask<Book?> SearchAsync(string BookTitle)
         {
-            return await _repo.ReadAsync(a => a.Title.ToLower()==BookTitle.ToLower());
+            return await _repo.ReadAsync(a => a.Title.ToLower() == BookTitle.ToLower());
         }
     }
 }

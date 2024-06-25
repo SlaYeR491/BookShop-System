@@ -6,6 +6,8 @@ using BookShop.Application.Services;
 using BookShop.Domain.Interfaces;
 using BookShop.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 
 namespace BookShop.API.Extensions
 {
@@ -32,8 +34,14 @@ namespace BookShop.API.Extensions
                .Configure<JwtOptions>(configuration.GetSection("Jwt"))
                .AddScoped<JwtServices>()
                .AddScoped(typeof(Mapper<,>))
-               .AddScoped<Hashing>()
-               ;
+               .AddScoped<Hashing>();
+            IOptions<MemoryCacheOptions> options = new MemoryCacheOptions
+            {
+                SizeLimit = 1000
+            };
+            IMemoryCache mem = new MemoryCache(options);
+            services
+                .AddSingleton(mem);
 
         }
     }
