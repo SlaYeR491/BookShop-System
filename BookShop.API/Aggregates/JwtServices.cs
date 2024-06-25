@@ -1,4 +1,5 @@
-﻿using BookShop.API.Options;
+﻿using BookShop.API.Configurations;
+using BookShop.API.Options;
 using BookShop.Domain.Interfaces;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -28,20 +29,24 @@ namespace BookShop.API.Aggregates
             var token = _jwtHandler.CreateToken(_descriptor);
             return _jwtHandler.WriteToken(token);
         }
+        private TokenValidationParameters Copy(TokenValidationParameters source)
+        {
+            var sourceprop = source.GetType().GetProperties();
+            TokenValidationParameters target = new();
+            foreach (var prop in sourceprop)
+            {
+                var value = prop.GetValue(source);
+                if (value != null && prop.CanWrite)
+                    prop.SetValue(target, value);
+            }
+            return target;
+        }
         public async ValueTask<string> CreateRefreshTokenAsync(string oldtoken, int accountId)
         {
             if (!await customerService.IsActiveAsync(accountId))
                 return "Must Login First";
-            var validationparameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Value.SigningKey)),
-                ValidIssuer = options.Value.Issuer,
-                ValidAudience = options.Value.Audience
-
-            };
+            var validationparameters = Copy(JwtConfigure.validationParameters);
+            validationparameters.ValidateLifetime = false;
             try
             {
                 var claimsPrincipal = _jwtHandler.ValidateToken(oldtoken, validationparameters, out var _discard);
@@ -51,7 +56,7 @@ namespace BookShop.API.Aggregates
                 var expDate = DateTime.Parse(claims.Claims.FirstOrDefault(a => a.Type == ClaimTypes.Expiration).Value);
                 if (expDate > DateTime.UtcNow)
                     return "Not Expired Yet";
-                _descriptor.Expires = DateTime.UtcNow.AddHours(3);
+                _descriptor.Expires = DateTime.UtcNow.AddHours(10);
                 claims.AddClaim(new(ClaimTypes.Expiration, _descriptor.Expires.ToString()));
                 _descriptor.Subject = claims;
                 var newtoken = _jwtHandler.CreateToken(_descriptor);
